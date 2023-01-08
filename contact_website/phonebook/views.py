@@ -67,10 +67,20 @@ def contactUpdate(request, pk):
     if not contact.user == user:
         raise AuthenticationFailed('Unauthenticated')
 
-    #TODO try except
-    name = request.data['name']
-    phone = request.data['phone']
-    address = request.data['address']
+    try:
+        name = request.data['name']
+    except:
+        name = contact.name
+
+    try:
+        phone = request.data['phone']
+    except:
+        phone = contact.phone
+
+    try:
+        address = request.data['address']
+    except:
+        address = contact.address
 
     data = {
         "name": name,
@@ -93,7 +103,6 @@ def createContact(request):
 
     user = getuser(token)
 
-    #TODO try except
     name = request.data['name']
     phone = request.data['phone']
     address = request.data['address']
