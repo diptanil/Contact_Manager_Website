@@ -11,9 +11,6 @@ from .serializers import ContactsSerializer, ContactGroupsSerializer
 
 SECRET = 'secretword'
 
-# Create your views here.
-# class ContactsView(APIView):
-#     def
 
 User = get_user_model()
 def getuser(token):
@@ -169,7 +166,6 @@ def createGroup(request):
 
     user = getuser(token)
 
-    #TODO try except
     new_group = ContactGroups.objects.create(name = request.data['name'], user = user)
     new_group.save()
 
